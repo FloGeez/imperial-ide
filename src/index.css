@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Star Jedi";
+  src: url("https://db.onlinewebfonts.com/t/0c724f6aa457310440cf8949c615cbd7.woff2")
+    format("woff2");
+}
+
+@layer base {
+  :root {
+    --background: 229 84% 5%;
+    --foreground: 210 40% 98%;
+    --card: 229 84% 7%;
+    --card-foreground: 210 40% 98%;
+    --popover: 229 84% 5%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 54 100% 56%; /* #FFE81F - Star Wars Yellow */
+    --primary-foreground: 229 84% 5%;
+    --secondary: 215 98% 63%; /* Lightsaber Blue */
+    --secondary-foreground: 210 40% 98%;
+    --muted: 229 84% 9%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 215 98% 63%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%; /* Sith Red */
+    --destructive-foreground: 210 40% 98%;
+    --border: 229 84% 12%;
+    --input: 229 84% 12%;
+    --ring: 48 96% 53%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+textarea::-webkit-scrollbar {
+  display: none;
+}
+
+textarea {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  min-height: 400px;
+}
+
+.star-wars-title {
+  font-family: "Star Jedi", sans-serif;
+  letter-spacing: 2px;
+}
+
+/* Lightsaber glow effects */
+.glow-border {
+  box-shadow: 0 0 15px theme("colors.secondary.DEFAULT"),
+    inset 0 0 8px theme("colors.secondary.DEFAULT");
+}
+
+.glow-text {
+  text-shadow: 0 0 10px theme("colors.primary.DEFAULT");
+}
+
+/* Star Wars-inspired scanlines */
+.scanlines {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanlines::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: repeating-linear-gradient(
+    transparent 0%,
+    rgba(0, 128, 255, 0.05) 0.5%,
+    transparent 1%
+  );
+  animation: scanlines 10s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scanlines {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+/* Hologram effect */
+.hologram {
+  position: relative;
+  animation: hologram 2s ease-in-out infinite;
+}
+
+@keyframes hologram {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+    text-shadow: 0 0 15px theme("colors.secondary.DEFAULT");
+  }
+}
+
+/* Styles pour la scrollbar du terminal xterm */
+.xterm .xterm-viewport::-webkit-scrollbar {
+  width: 10px;
+  background-color: transparent;
+}
+
+.xterm .xterm-viewport::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--border));
+  border-radius: 9999px;
+}
+
+.xterm .xterm-viewport::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Pour Firefox */
+.xterm .xterm-viewport {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--border)) transparent;
+}
+
+/* Styles pour Monaco Editor */
+.monaco-editor {
+  padding: 0.5rem;
+  width: 100% !important;
+}
+
+.monaco-editor .overflow-guard {
+  border-radius: 0.5rem;
+}
