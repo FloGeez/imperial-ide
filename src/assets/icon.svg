@@ -1,0 +1,57 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Définition des dégradés -->
+  <defs>
+    <radialGradient id="shadowGradient" cx="0" cy="0.4" r="0.7">
+      <stop offset="0%" stop-color="#607D9B"/>
+      <stop offset="40%" stop-color="#4A6785"/>
+      <stop offset="80%" stop-color="#2C3E50"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+    <linearGradient id="sideGradient" x1="0" y1="0.5" x2="1" y2="0.5">
+      <stop offset="40%" stop-color="#34495E" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#0A1014" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="trenchGradient" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2C3E50"/>
+      <stop offset="40%" stop-color="#1C2833"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </linearGradient>
+    <linearGradient id="lowerTrenchGradient" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#809DBB"/>
+      <stop offset="40%" stop-color="#4A6785"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Structure principale de l'Étoile Noire avec dégradé -->
+  <circle cx="12" cy="12" r="12" fill="url(#shadowGradient)" stroke="#405A74" stroke-width="0"/>
+  
+  <!-- Ombre supplémentaire sur le côté droit -->
+  <path d="M12 2 A10 10 0 0 1 12 22 A10 10 0 0 1 12 2" fill="url(#sideGradient)" opacity="0.8"/>
+  
+  <!-- Nouvelle tranchée inférieure plus large -->
+  <path 
+    d="M0 11.5 
+       L24 11.5
+       L24 12.5
+       L0 12.5
+       Z" 
+    fill="url(#lowerTrenchGradient)"/>
+  
+  <!-- Tranchée équatoriale principale avec le nouveau dégradé -->
+  <path 
+    d="M0 11.75 
+       L24 11.75 
+       L24 12.25 
+       L0 12.25 
+       Z" 
+    fill="url(#trenchGradient)"/>
+  
+  <!-- Super Laser -->
+  <circle cx="10" cy="7" r="3" fill="#1C2E40" stroke="#2E4053" stroke-width="0.5"/>
+  <circle cx="10" cy="7" r="0.2" fill="#0A1014" opacity="0.8" filter="drop-shadow(0 0 2px #2ECC71)"/>
+  
+  <!-- Chevrons Code -->
+  <path d="M8 8L4 12L8 16" stroke="#FFE81F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" filter="drop-shadow(0 0 2px #FFE81F)"/>
+  <path d="M16 8L20 12L16 16" stroke="#FFE81F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" filter="drop-shadow(0 0 2px #FFE81F)"/>
+</svg>

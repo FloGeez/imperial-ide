@@ -35,7 +35,7 @@ export function useTabs() {
     (tabId: string) => {
       setTabs((prev) => prev.filter((tab) => tab.id !== tabId));
       if (activeTab === tabId) {
-        setActiveTab((prev) => {
+        setActiveTab(() => {
           const remainingTabs = tabs.filter((tab) => tab.id !== tabId);
           return remainingTabs.length > 0
             ? remainingTabs[remainingTabs.length - 1].id

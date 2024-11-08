@@ -208,9 +208,11 @@ export function FileExplorer({
             className="hidden"
             id="file-upload"
             onChange={(e) => e.target.files && onUpload?.(e.target.files)}
-            webkitdirectory=""
-            directory=""
             multiple
+            {...({
+              webkitdirectory: "",
+              directory: "",
+            } as any)}
           />
           <Button
             variant="ghost"

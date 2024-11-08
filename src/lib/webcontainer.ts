@@ -32,7 +32,9 @@ class WebContainerService {
         console.error("Boot error:", error);
         window.dispatchEvent(
           new CustomEvent("terminal-output", {
-            detail: `\x1b[31m❌ Error: ${error.message}\r\n`,
+            detail: `\x1b[31m❌ Error: ${
+              error instanceof Error ? error.message : "Unknown error"
+            }\r\n`,
           })
         );
         this.webcontainer = null;
