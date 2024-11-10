@@ -311,7 +311,7 @@ export function Preview({ isFullscreen, onFullscreenChange }: PreviewProps) {
             title="Recharger la preview"
             disabled={!activeServer}
           >
-            <RotateCcw className="h-3 w-3" />
+            <RotateCcw className="h-4 w-4" />
           </Button>
           <Button
             variant="ghost"
@@ -321,9 +321,9 @@ export function Preview({ isFullscreen, onFullscreenChange }: PreviewProps) {
             title={isFullscreen ? "Réduire" : "Agrandir"}
           >
             {isFullscreen ? (
-              <Minimize className="h-3 w-3" />
+              <Minimize className="h-4 w-4" />
             ) : (
-              <Fullscreen className="h-3 w-3" />
+              <Fullscreen className="h-4 w-4" />
             )}
           </Button>
         </div>

@@ -2,6 +2,7 @@ import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Tab } from "@/lib/types";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 interface EditorTabsProps {
   tabs: Tab[];
@@ -16,9 +17,10 @@ export function EditorTabs({
   onTabSelect,
   onTabClose,
 }: EditorTabsProps) {
+  const isMobile = useMediaQuery("(max-width: 768px)");
   return (
     <ScrollArea className="h-9">
-      <div className="flex items-center gap-1 px-2 bg-card/50 border-b border-border/50 overflow-x-auto">
+      <div className="h-full flex items-center gap-1 px-2 bg-card/50 border-b border-border/50 overflow-x-auto">
         {tabs.map((tab) => (
           <div
             key={tab.id}
@@ -30,7 +32,14 @@ export function EditorTabs({
             )}
             onClick={() => onTabSelect(tab.id)}
           >
-            <span className="truncate max-w-[120px]">{tab.label}</span>
+            <span
+              className={cn(
+                "truncate",
+                isMobile ? "max-w-[80px]" : "max-w-[120px]"
+              )}
+            >
+              {tab.label}
+            </span>
             <button
               className="opacity-0 group-hover:opacity-100 hover:text-destructive"
               onClick={(e) => {

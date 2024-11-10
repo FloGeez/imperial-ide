@@ -173,7 +173,7 @@ export function FileExplorer({
                   setEditingPath(node.path);
                 }}
               >
-                <Edit2 className="h-3 w-3" />
+                <Edit2 className="h-4 w-4" />
               </Button>
               <Button
                 variant="ghost"
@@ -184,7 +184,7 @@ export function FileExplorer({
                   onDelete?.(node.path);
                 }}
               >
-                <Trash2 className="h-3 w-3" />
+                <Trash2 className="h-4 w-4" />
               </Button>
             </div>
           )}
@@ -224,7 +224,7 @@ export function FileExplorer({
             onClick={() => document.getElementById("file-upload")?.click()}
             title="Importer un projet"
           >
-            <Upload className="h-3 w-3" />
+            <Upload className="h-4 w-4" />
           </Button>
         </div>
         <Button
@@ -236,7 +236,7 @@ export function FileExplorer({
           title="Recharger les fichiers"
         >
           <RefreshCw
-            className={`h-3 w-3 ${isLoadingFiles ? "animate-spin" : ""}`}
+            className={`h-4 w-4 ${isLoadingFiles ? "animate-spin" : ""}`}
           />
         </Button>
       </div>

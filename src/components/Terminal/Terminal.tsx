@@ -1,8 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useMemo } from "react";
 import { Terminal as XTerm } from "@xterm/xterm";
 import { FitAddon } from "@xterm/addon-fit";
 import { useWebContainer } from "@/lib/webcontainer-context";
 import "@xterm/xterm/css/xterm.css";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 export function Terminal() {
   const terminalRef = useRef<HTMLDivElement>(null);
@@ -10,11 +11,11 @@ export function Terminal() {
   const fitAddonRef = useRef<FitAddon | null>(null);
   const currentProcessRef = useRef<any>(null);
   const { webcontainer, setIsInstalled } = useWebContainer();
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
-  useEffect(() => {
-    if (!terminalRef.current || !webcontainer) return;
-
-    const term = new XTerm({
+  // Configuration du terminal mémorisée
+  const terminalConfig = useMemo(
+    () => ({
       theme: {
         background: "#030712",
         foreground: "#FFE81F",
@@ -22,10 +23,18 @@ export function Terminal() {
         cursorAccent: "#030712",
       },
       fontFamily: "monospace",
-      fontSize: 14,
+      fontSize: isMobile ? 12 : 14,
       cursorBlink: true,
       convertEol: true,
-    });
+      rows: isMobile ? 8 : undefined,
+    }),
+    []
+  );
+
+  useEffect(() => {
+    if (!terminalRef.current || !webcontainer) return;
+
+    const term = new XTerm(terminalConfig);
 
     const fitAddon = new FitAddon();
     term.loadAddon(fitAddon);
@@ -132,7 +141,7 @@ export function Terminal() {
       }
       xtermRef.current?.dispose();
     };
-  }, [webcontainer, setIsInstalled]);
+  }, [webcontainer, setIsInstalled, terminalConfig]); // terminalConfig au lieu de isMobile
 
   return <div ref={terminalRef} className="h-full w-full" />;
 }

@@ -1,6 +1,8 @@
 import { EditorTabs } from "../Editor/EditorTabs";
 import { CodeEditor } from "../Editor/CodeEditor";
 import { Tab } from "@/lib/types";
+import { Button } from "@/components/ui/button";
+import { PanelLeftClose, PanelLeftOpen } from "lucide-react";
 
 interface EditorPanelProps {
   tabs: Tab[];
@@ -9,6 +11,8 @@ interface EditorPanelProps {
   onTabSelect: (tabId: string) => void;
   onTabClose: (tabId: string) => void;
   onCodeChange: (code: string) => void;
+  isExplorerOpen: boolean;
+  onToggleExplorer: () => void;
 }
 
 export function EditorPanel({
@@ -18,6 +22,8 @@ export function EditorPanel({
   onTabSelect,
   onTabClose,
   onCodeChange,
+  isExplorerOpen,
+  onToggleExplorer,
 }: EditorPanelProps) {
   const getLanguageFromFileName = (filename: string): string => {
     const ext = filename.split(".").pop()?.toLowerCase();
@@ -42,12 +48,33 @@ export function EditorPanel({
 
   return (
     <div className="h-full flex flex-col bg-card/50">
-      <EditorTabs
-        tabs={tabs}
-        activeTab={activeTab}
-        onTabSelect={onTabSelect}
-        onTabClose={onTabClose}
-      />
+      <div className="flex items-center gap-2 px-2 bg-card/50 border-b border-border/50">
+        <div>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="effect-hover h-7 w-7"
+            onClick={onToggleExplorer}
+            title={
+              isExplorerOpen
+                ? "Fermer l'explorateur de fichiers"
+                : "Ouvrir l'explorateur de fichiers"
+            }
+          >
+            {isExplorerOpen ? (
+              <PanelLeftClose className="h-4 w-4" />
+            ) : (
+              <PanelLeftOpen className="h-4 w-4" />
+            )}
+          </Button>
+        </div>
+        <EditorTabs
+          tabs={tabs}
+          activeTab={activeTab}
+          onTabSelect={onTabSelect}
+          onTabClose={onTabClose}
+        />
+      </div>
       {activeTab ? (
         <CodeEditor
           value={activeTabContent}

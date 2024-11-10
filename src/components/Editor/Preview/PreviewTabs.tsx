@@ -39,7 +39,7 @@ export function PreviewTabs({
 
   return (
     <ScrollArea className="h-9">
-      <div className="flex items-center gap-1 px-2 bg-card/50 border-b border-border/50 overflow-x-auto">
+      <div className="h-full flex items-center gap-1 px-2 bg-card/50 border-b border-border/50 overflow-x-auto">
         {servers.map(({ port, displayUrl }) => (
           <div
             key={port}
@@ -82,7 +82,7 @@ export function PreviewTabs({
                   }}
                   className="opacity-0 group-hover:opacity-100 hover:text-primary"
                 >
-                  <Pencil className="h-3 w-3" />
+                  <Pencil className="h-4 w-4" />
                 </button>
               </>
             )}
