@@ -1,6 +1,7 @@
 import { PanelLeftOpen, PanelLeftClose } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import iconSvg from "@/assets/icon.svg";
+import HyperText from "../ui/hyper-text";
 
 interface TopBarProps {
   isExplorerOpen: boolean;
@@ -25,9 +26,10 @@ export function TopBar({ isExplorerOpen, onToggleExplorer }: TopBarProps) {
         </Button>
         <div className="flex items-center gap-2 bg-muted px-3 py-1.5 rounded-lg border border-blue-500/20">
           <img src={iconSvg} alt="Logo" className="h-7 w-7" />
-          <h1 className="text-lg font-bold text-primary star-wars-title effect-text-glow">
-            IMPERIAL_IDE
-          </h1>
+          <HyperText
+            text="IMPERIAL_IDE"
+            className="text-lg font-bold text-primary imperial-ide-title effect-text-glow"
+          />
         </div>
       </div>
     </div>

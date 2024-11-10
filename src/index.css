@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: "Star Jedi";
-  src: url("https://db.onlinewebfonts.com/t/0c724f6aa457310440cf8949c615cbd7.woff2")
-    format("woff2");
-}
-
 @layer base {
   :root {
     --background: 229 84% 5%;
@@ -53,8 +47,8 @@ textarea {
   min-height: 400px;
 }
 
-.star-wars-title {
-  font-family: "Star Jedi", sans-serif;
+.imperial-ide-title {
+  /* TODO: Add font */
   letter-spacing: 2px;
 }
 
